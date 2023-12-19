@@ -24,14 +24,33 @@ Gosnifp is a network sniffer focused on DNS communications that seeks to analyze
 
 ## FAQ
 
-### What is passive DNS?
+<details>
+<summary>
+     What is passive DNS?
+</summary>
 
+<p>
 Passive DNS is the act of collecting and storing DNS communication for future analysis, i.e. it consists of saving DNS request and response data.
+</p>
+</details>
 
-### What is a Sniffer?
 
+<details>
+<summary>
+    What is a Sniffer?
+</summary>
+
+<p>
 A sniffer is a program or piece of hardware that intercepts, visualizes and records network traffic data.
+</p>
+</details>
 
-### Can I contribute to the project?
+<details>
+<summary>
+     Can I contribute to the project?
+</summary>
 
-Qualquer contribuíção é aceita e bem vinda, o projeto inicialmente é algo publico e serve como base para estudos de rede, porém pode ser utilizado para casos reais.
+<p>
+Any contribution is accepted and welcome, the project is initially public and serves as a basis for network studies, but can be used for real cases.
+</p>
+</details>
