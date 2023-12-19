@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"strconv"
 	"time"
@@ -36,10 +37,14 @@ func main() {
 	devices, err := pcap.FindAllDevs()
 
 	if err != nil {
-		logger.ErrorLog("Error during devices scan")
+		logger.FatalLog("Error during devices scan", err)
 	}
 
 	logger.InfoLog("Searching for devices")
+
+	if len(args) == 0 {
+		logger.FatalLog("couldn't find the args", fmt.Errorf("the length of the arguments is 0"))
+	}
 
 	for _, dev := range devices {
 		if dev.Name == args[0] {
@@ -48,20 +53,16 @@ func main() {
 		}
 	}
 
-	if device == "" {
-		logger.ErrorLog("Device not found")
-	}
-
 	live, err := pcap.OpenLive(device, 1600, false, pcap.BlockForever)
 
 	if err != nil {
-		logger.ErrorLog(err.Error())
+		logger.FatalLog("Cannot open live: ", err)
 	}
 
 	defer live.Close()
 
 	if err := live.SetBPFFilter("udp and port 53"); err != nil {
-		panic("Error during BPF filter: " + err.Error())
+		logger.FatalLog("Error during BPF filter: ", err)
 	}
 
 	logger.InfoLog("BPF filter set [udp and port 53]")
@@ -97,7 +98,7 @@ func main() {
 							response := models.NewAnswer(string(answer.Name), answer.IP.String(), strconv.FormatUint(uint64(answer.TTL), 10))
 							dnsMessage.Answers = append(dnsMessage.Answers, response)
 
-							logger.DNSLog(srcAddr + " -> " + dstAddr + " " + response.Name + " " + string(response.IpAddr) + " " + string(response.TTL))
+							logger.DNSLog(srcAddr + " -> " + dstAddr + " " + response.Name + " " + string(response.IpAddr) + " TTL " + string(response.TTL))
 						}
 					}
 
