@@ -1,13 +1,15 @@
 package logger
 
-import "log"
+import (
+	"log"
+)
 
 type Logger struct {
 	Path string
 }
 
 func (l Logger) ErrorLog(message string) {
-	log.Println(Red + "[Error] " + Reset + message)
+	log.Fatalln(Red + "[ERROR] " + Reset + message)
 }
 
 func (l Logger) DNSLog(message string) {
@@ -15,7 +17,7 @@ func (l Logger) DNSLog(message string) {
 }
 
 func (l Logger) InfoLog(message string) {
-	log.Println(Blue + "[Info] " + Reset + message)
+	log.Println(Blue + "[INFO] " + Reset + message)
 }
 
 func (l Logger) putInFile(message string) {
