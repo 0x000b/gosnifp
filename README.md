@@ -1,29 +1,48 @@
 <h1 align="center">
-
 <img src="./assets/icon.png" width=200>
+    
+Gosnifp
 
-Gosnifp - DNS Packet Sniffer
+
 </h1>
 
-- [Sobre](#sobre)
-- [Diagrama](#diagrama)
-- [FAQ](#faq)
+<h4 align="center">
 
-### Linguagens
+[Português](./README.md)
 
-- [English](./ENGLISH.md)
-- [Portugues](./README.md)
+[English](./ENGLISH.md)
 
-## Sobre
+</h4>
 
-Gosnifp é um sniffer de rede focado em comunicações DNS que busca analisar e processar os dados coletados, bem como transformá-los em DNS Passivo.
+Um sniffer de rede focado em comunicações DNS 
+
+
+<img src="./assets/initial.png" width=860>
+
+## Instalação
+
+Caso queira todos os arquivos do projeto, certifique-se de que tenha o `Go` instalado e simplesmente `clone` o projeto.
+
+```bash
+git clone https://github.com/0x000b/gosnifp.git
+cd gosnifp/
+```
+Na pasta, `digite`:
+```bash
+go build cmd/gosnifp/main.go
+```
+Obtido arquivo binário, apenas use `sudo` para permitir que o sniffer leia sua interface:
+```bash
+sudo ./gosnifp [INTERFACE]
+```
 
 ## Diagrama
 
-<img src="./assets/arch.png" width=500>
+O diagrama busca representar o funcionamento básico do sniffer. Os pacotes DNS recebidos passam por dois processos principais: Sniffer e Preprocessor. O `Sniffer` é de fato a parte do software que captura os pacotes de forma ativa na rede e os envia para processamento. O `Preprocessor` é o responsável por capturar os dados importantes do pacote, criando um objeto referente ao pacote e enviando-o para os monitores (`Monitor Logging`) e loggers que criarão os arquivos de `Log`.
 
+<img src="./assets/arch.png">
 
-## FAQ
+## FAQ 
 
 <details>
 <summary>
