@@ -19,7 +19,7 @@ A network sniffer focused on DNS communications.
 
 <img src="./assets/initial.png" width=860>
 
-## Instalação
+## Installation
 
 If you want all the project files, make sure you have `Go` installed and simply `clone` the project.
 
@@ -36,7 +36,7 @@ Once you have obtained the binary file, just use `sudo` to allow the sniffer to 
 sudo ./gosnifp [INTERFACE]
 ```
 
-## Diagrama
+## Diagram
 
 The diagram tries to represent the basic functioning of the sniffer. Incoming DNS packets pass through two main processes: Sniffer and Preprocessor. The `Sniffer` is actually the part of the software that actively captures packets on the network and sends them for processing. The `Preprocessor` is responsible for capturing the important data from the packet, creating an object relating to the packet and sending it to the monitors (`Monitor Logging`) and loggers who will create the `Log` files.
 
