@@ -21,7 +21,7 @@ func (l Logger) FatalLog(message string, err error) {
 
 func (l Logger) DNSLog(message string) {
 	log.Print(message)
-	//l.putInFile(message)
+	l.putInFile(message)
 }
 
 func (l Logger) InfoLog(message string) {
